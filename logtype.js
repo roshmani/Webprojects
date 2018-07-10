@@ -17,8 +17,10 @@ function LogType(arg) {
     var type = typeof arg;
     if (isNaN(arg) === true && type === "number") {
         console.log("not a number!");
-    } else if (type === "object" && arg === null) {
+    } else if (arg === null) {
         console.log("null!");
+    } else if (Array.isArray(arg) === true) {
+        console.log("array!");
     } else {
         console.log('"' + type + '!"');
     }
