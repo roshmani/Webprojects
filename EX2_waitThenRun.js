@@ -1,4 +1,4 @@
-/*Write a function that takes another function as a parameter. 
+/*Write a function that takes another function as a parameter.
 It should wait 1.5 seconds and then run the function that was passed in.
 waitThenRun(function() {
     console.log('Hello!');
@@ -8,17 +8,17 @@ waitThenRun(function() {
     console.log('Goodbye!');
 }); // logs 'Goodbye!' 1.5 seconds later*/
 //--------------------------------------------------------------------------------------------------------------------------------------
-function Hello() {
+function hello() {
     console.log("Hello!");
 }
 
-function Goodbye() {
+function goodbye() {
     console.log("Goodbye!");
 }
 
-function WaitThenRun(callbackarg) {
+function waitThenRun(callbackarg) {
     setTimeout(callbackarg, 1500);
 }
 
-WaitThenRun(Hello);
-WaitThenRun(Goodbye);
+waitThenRun(hello);
+waitThenRun(goodbye);
