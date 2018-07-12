@@ -10,7 +10,7 @@ function sumOfNumbers() {
     for (var i = 0; i < arguments.length; i++) {
         sum += arguments[i];
     }
-    console.log(sum);
+    return sum;
 }
 
 sumOfNumbers(10, 20);
