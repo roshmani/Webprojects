@@ -13,13 +13,13 @@ body {
 #wrapper {
     min-height: 100%;
     height: auto !important;
-    margin-bottom: -20px; /* the bottom margin is the negative value of the footer's total height */
+    margin-bottom: -15px; /* the bottom margin is the negative value of the footer's total height */
 }
 
 #wrapper:after {
     content: "";
     display: block;
-    height: 20px; /* the footer's total height */
+    height: 15px; /* the footer's total height */
 }
 header {
     padding: 10px;
@@ -30,13 +30,19 @@ header {
     display: inline-block;
     margin: 20px;
 }
-
+#logoimg {
+    height: 60px;
+}
+#menuimg {
+    height: 50px;
+    width: 50px;
+}
 #menubutton {
     display: inline-block;
     position: absolute;
-    top: 20px;
+    height: 45px;
+    top: 30px;
     left: 90%;
-    padding: 10px;
 }
 .banner {
     position: relative;
@@ -69,7 +75,7 @@ button {
     background-color: #d4b918;
 }
 
-h1 {
+h2 {
     color: white;
     padding: 5px;
 }
@@ -80,7 +86,6 @@ h1 {
 .row {
     font-family: "Georgia";
     font-size: 15px;
-    font-weight: bolder;
     margin-left: 15%;
     width: 85%;
 }
@@ -112,15 +117,66 @@ p {
     float: left;
 }
 .footer {
-    height: 10px;
+    height: 15px;
 }
 
 #footer-content {
     background-color: grey;
     color: white;
-    height: 20px; /* height + top/bottom paddding + top/bottom border must add up to footer height */
-    padding: 20px;
+    height: 15px; /* height + top/bottom paddding + top/bottom border must add up to footer height */
+    padding: 17px;
     line-height: 0.5;
 }
+
 @media screen and (max-width: 700px) {
+    header {
+        height: 75px;
+    }
+
+    #menubutton {
+        left: 80%;
+        top: 20px;
+    }
+    #menuimg {
+        height: 50px;
+        width: 35px;
+    }
+    #logoimg {
+        height: 40px;
+    }
+
+    #logo {
+        margin: 15px;
+    }
+
+    .banner {
+        height: 200px;
+        font-size: 12px;
+    }
+
+    #bannercontent {
+        top: 40%;
+        width: inherit;
+    }
+    button {
+        width: 125px;
+        height: 25px;
+        font-size: 15px;
+    }
+    .column {
+        float: none;
+        width: 100%;
+        display: block;
+    }
+    h3 {
+        font-size: 17px;
+    }
+    .icons {
+        margin-top: 40px;
+        margin-right: 15px;
+        margin-bottom: 15px;
+        height: 50px;
+        width: 50px;
+        float: left;
+    }
 }
