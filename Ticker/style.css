@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+}
+#box {
+    height: 25px;
+    border-bottom: 1px solid black;
+    position: absolute;
+    left: 100%;
+    white-space: nowrap;
+}
+a {
+    margin-right: 5px;
+    font-family: monospace;
+}
