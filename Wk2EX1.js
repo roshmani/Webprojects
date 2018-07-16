@@ -11,4 +11,4 @@ function changeStyling(selectorarg) {
     }
 }
 
-window.onLoad = changeStyling("section");
+changeStyling("section");
