@@ -7,8 +7,10 @@
     position: absolute;
     left: 100%;
     white-space: nowrap;
+    text-overflow: ellipsis;
 }
 a {
     margin-right: 5px;
     font-family: monospace;
+    text-decoration: none;
 }
