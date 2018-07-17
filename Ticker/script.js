@@ -17,18 +17,19 @@
         animId = requestAnimationFrame(move);
     }
     move();
-    var linkelems = document.querySelectorAll("a");
-    for (var i = 0; i < linkelems.length; i++) {
-        linkelems[i].addEventListener("mouseenter", function() {
-            cancelAnimationFrame(animId);
-            //linkelems[i].style.textDecoration = "underline";
-            //linkelems[i].style.color = "blue";
-        });
-    }
 
-    for (var j = 0; j < linkelems.length; j++) {
-        linkelems[j].addEventListener("mouseleave", function() {
+    var linkelems = document.getElementsByClassName('news');
+    var boxelem= document.getElementById('box');
+
+    Array.prototype.forEach.call(linkelems, function(link) {
+      link.addEventListener("mouseenter", function() {
+          cancelAnimationFrame(animId);
+          link.style.textDecoration = "underline";
+          link.style.color = "blue";
+      });
+    });
+           boxelem.addEventListener("mouseleave", function() {
             move();
         });
-    }
+
 })();
