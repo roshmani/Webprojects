@@ -1,5 +1,6 @@
 /* Reichstag javascript */
 (function() {
+    //click even for opening the menu
     var menuElem = document.getElementById("menuimg");
     menuElem.addEventListener("click", function(e) {
         e.stopPropagation();
@@ -9,17 +10,18 @@
     function menuClose() {
         document.body.classList.remove("menu-on");
     }
-    console.log(closeelem);
+    //click event for closing the menu by clicking on x button
     closeelem.addEventListener("click", function(e) {
         e.stopPropagation();
-        console.log("close button event");
         menuClose();
     });
+    //click event for closing the menu by cliking on the page outside menu
     document.body.addEventListener("click", function(e) {
         e.preventDefault();
         menuClose();
     });
-    var menuHolder = document.getElementsByClassName("menuclose")[0];
+    //e.stopPropagation() on the immediate parent to prevent bubbling
+    var menuHolder = document.getElementsByClassName("menu")[0];
     menuHolder.addEventListener("click", function(e) {
         e.stopPropagation();
     });
