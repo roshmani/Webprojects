@@ -66,10 +66,10 @@ header {
     height: 100%;
 }
 
-.menu-on .menu {
+.menu-on .menuclose {
     transform: translateX(0);
     transition-property: transform;
-    transition-duration: 0.5s;
+    transition-duration: 1s;
 }
 
 .closebutton {
