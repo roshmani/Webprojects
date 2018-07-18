@@ -44,6 +44,39 @@ header {
     top: 30px;
     left: 90%;
 }
+#hamburger-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transform: translateX(-1000%);
+}
+
+.menu-on #hamburger-menu {
+    transform: translateX(0);
+}
+
+.menuclose {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: white;
+    width: 300px;
+    height: 100%;
+}
+
+.menu-on .menu {
+    transform: translateX(0);
+    transition-property: transform;
+    transition-duration: 0.5s;
+}
+
+.closebutton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
 .banner {
     position: relative;
     width: 100%;
