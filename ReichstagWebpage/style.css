@@ -52,7 +52,25 @@ header {
     right: 0;
     transform: translateX(-1000%);
 }
-
+.menu a {
+    text-decoration: none;
+    color: black;
+}
+ul {
+    margin-top: 50px;
+    padding: 0;
+    list-style: none;
+    display: block;
+    height: 50px;
+    z-index: 2;
+    position: relative;
+}
+ul li {
+    display: block;
+    margin: 0;
+    padding: 10px;
+    font-size: 20px;
+}
 .menu-on #hamburger-menu {
     transform: translateX(0);
 }
