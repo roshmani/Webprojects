@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+}
+
+#container {
+    width: 820px;
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+}
+.bigbox {
+    display: flex;
+    width: 200px;
+    height: 200px;
+}
+#graybox {
+    background-color: gray;
+    flex-direction: row-reverse;
+}
+#blackbox {
+    background-color: black;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+}
+#bluebox {
+    background-color: blue;
+    align-items: flex-end;
+}
+#purplebox {
+    background-color: purple;
+}
+
+.smallbox {
+    width: 100px;
+    height: 100px;
+}
+
+#box1 {
+    background-color: orange;
+}
+
+#box2 {
+    background-color: yellow;
+}
+
+#box3 {
+    background-color: green;
+}
+
+#box4 {
+    background-color: lightpink;
+}
