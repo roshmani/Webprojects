@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+#resizeablewrapper {
+    position: relative;
+    height: 600px;
+    width: 800px;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border: 2px solid orange;
+}
+
+.panes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+.panes img {
+    width: 800px;
+    height: 600px;
+    object-fit: contain;
+    /*object-position: center;*/
+}
+.slider {
+    position: absolute;
+    height: 100%;
+    width: 15px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border: 2px solid black;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #f5f5f5;
+    z-index: 10;
+}
