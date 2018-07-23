@@ -25,4 +25,14 @@
     menuHolder.addEventListener("click", function(e) {
         e.stopPropagation();
     });
+
+    $(document).ready(function() {
+        setTimeout(function() {
+            var modalDlg = $("#modalmsg");
+            modalDlg.show();
+        }, 1000);
+    });
+    $(".closemodal").click(function() {
+        $("#modalmsg").remove();
+    });
 })();

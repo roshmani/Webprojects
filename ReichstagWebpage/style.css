@@ -168,6 +168,36 @@ p {
     width: 50px;
     float: left;
 }
+
+#modalmsg {
+    display: none;
+    position: fixed;
+    top: 50%;
+    right: 0;
+    bottom: 0;
+    left: 40%;
+    width: 420px;
+    height: 200px;
+    z-index: 99999;
+    border-radius: 20px;
+    border: 2px solid black;
+    background-color: white;
+    text-align: left;
+}
+.closemodal {
+    position: absolute;
+    top: 10px;
+    right: 20px !important;
+    margin-bottom: 20px;
+    display: block;
+}
+.textmodal h4 {
+    font-family: "Georgia";
+}
+.textmodal {
+    padding-top: 10px;
+    margin: 20px;
+}
 .footer {
     height: 15px;
 }
