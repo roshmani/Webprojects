@@ -33,10 +33,7 @@
         return false;
     });
 
-    sliderid.on("mouseup", function() {
+    $(document).on("mouseup", function() {
         container.off("mousemove");
-        sliderid.off("mousedown");
-        mousedownFlag = false;
-        return false;
     });
 })();
