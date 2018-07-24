@@ -237,34 +237,40 @@
 
     //input event
     input.focus(function() {
-        input.on("input", function() {
-            var inputVal = $(this)
-                .val()
-                .toLowerCase();
-            if (inputVal.length != 0) {
-                matchArr.length = [];
-                for (var i = 0; i < countries.length; i++) {
-                    if (matchArr.length < 4) {
-                        if (countries[i].toLowerCase().indexOf(inputVal) == 0) {
-                            matchArr.push(countries[i]);
-                        } //end of countries match}
-                    } else {
-                        break;
-                    } //end of size check
-                } //end of for loop
-                listHtml = "";
-                for (var j = 0; j < matchArr.length; j++) {
-                    listHtml += '<div class="result">' + matchArr[j] + "</div>";
-                }
-                results.html(listHtml);
-                result = $(".result");
-                results.show();
-            } else {
-                results.empty();
-                results.hide();
-            }
-        });
+        populateList();
     }); //focus end
+
+    function populateList() {
+        results.html(listHtml);
+        result = $(".result");
+        results.show();
+    }
+    input.on("input", function() {
+        var inputVal = $(this)
+            .val()
+            .toLowerCase();
+        if (inputVal.length != 0) {
+            matchArr.length = [];
+            for (var i = 0; i < countries.length; i++) {
+                if (matchArr.length < 4) {
+                    if (countries[i].toLowerCase().indexOf(inputVal) == 0) {
+                        matchArr.push(countries[i]);
+                    } //end of countries match}
+                } else {
+                    break;
+                } //end of size check
+            } //end of for loop
+            listHtml = "";
+            for (var j = 0; j < matchArr.length; j++) {
+                listHtml += '<div class="result">' + matchArr[j] + "</div>";
+            }
+            populateList();
+        } else {
+            results.empty();
+            results.hide();
+        }
+    });
+
     //blur function on inputfield
     input.blur(function() {
         results.empty();
@@ -282,7 +288,7 @@
     });
     function addSelected(targetElem) {
         if (targetElem == "Enter") {
-            targetElem = $(".result").siblings(".highlighted");
+            targetElem = result.siblings(".highlighted");
         }
         input.val(targetElem.text());
         results.empty();
@@ -297,12 +303,10 @@
     });
 
     function highlightOnkeyPress(addRemIdx, next) {
-        var highlight = " ";
-        highlight = $(".result").siblings(".highlighted");
+        var highlight = "";
+        highlight = result.siblings(".highlighted");
         if (highlight.length === 0) {
-            $(".result")
-                .eq(addRemIdx)
-                .addClass("highlighted");
+            result.eq(addRemIdx).addClass("highlighted");
         }
         if (next == "next") {
             highlight.next().addClass("highlighted");
@@ -313,17 +317,17 @@
     }
 
     $(document).on("keydown", "input", function(e) {
-        //e.stopPropagation();
         var targetElem = "Enter";
         if (e.which == 13) {
             e.preventDefault();
             addSelected(targetElem);
         } else if (e.which == 38) {
-            e.preventDefault();
             //up arrow
+            e.preventDefault();
             console.log("keypress triggered up");
             highlightOnkeyPress(3, "prev");
         } else if (e.which == 40) {
+            //down arrow
             e.preventDefault();
             console.log("keypress triggered down");
             highlightOnkeyPress(0, "next");
