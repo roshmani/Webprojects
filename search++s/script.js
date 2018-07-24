@@ -1,4 +1,3 @@
-//------------------------------------------------------------------------------------------
 (function() {
     var countries = [
         "Afghanistan",
@@ -228,37 +227,50 @@
     var input = $("input");
     var results = $(".results");
     var matchArr = [];
-    var listHtml = " ";
+    var listHtml = "";
     var result;
-    input.on("input", function(e) {
-        console.log("input triggered up");
-        var inputVal = $(this).val();
-        if (inputVal !== " ") {
-            for (var i = 0; i < countries.length; i++) {
-                console.log(countries[i]);
-                if (countries[i].toLowerCase().indexOf(inputVal) != -1) {
-                    if (matchArr.length < 4) {
-                        matchArr.push(countries[i]);
-                        listHtml +=
-                            '<div class="result">' + countries[i] + "</div>";
-                    } else {
-                        break;
-                    } //end of size check
-                } //end of countries match
-            } //end of for loop
-            results.html(listHtml);
-            result = $(".result");
-            results.show();
-        } else {
-            results.empty();
-            results.hide();
-        }
-    });
 
     //hide the list on load
     $(document).ready(function() {
         results.hide();
     });
+
+    //input event
+    input.focus(function() {
+        input.on("input", function() {
+            var inputVal = $(this)
+                .val()
+                .toLowerCase();
+            if (inputVal.length != 0) {
+                matchArr.length = [];
+                for (var i = 0; i < countries.length; i++) {
+                    if (matchArr.length < 4) {
+                        if (countries[i].toLowerCase().indexOf(inputVal) == 0) {
+                            matchArr.push(countries[i]);
+                        } //end of countries match}
+                    } else {
+                        break;
+                    } //end of size check
+                } //end of for loop
+                listHtml = "";
+                for (var j = 0; j < matchArr.length; j++) {
+                    listHtml += '<div class="result">' + matchArr[j] + "</div>";
+                }
+                results.html(listHtml);
+                result = $(".result");
+                results.show();
+            } else {
+                results.empty();
+                results.hide();
+            }
+        });
+    }); //focus end
+    //blur function on inputfield
+    input.blur(function() {
+        results.empty();
+        results.hide();
+    });
+
     // event delegation
     $(document).on("mouseover", ".result", function(e) {
         e.preventDefault();
@@ -270,23 +282,27 @@
     });
     function addSelected(targetElem) {
         if (targetElem == "Enter") {
-            targetElem = result.siblings(".highlighted");
+            targetElem = $(".result").siblings(".highlighted");
         }
         input.val(targetElem.text());
         results.empty();
         results.hide();
     }
+
     $(document).on("mousedown", ".result", function(e) {
         e.preventDefault();
         e.stopPropagation();
         var targetElem = $(e.target);
         addSelected(targetElem);
     });
+
     function highlightOnkeyPress(addRemIdx, next) {
         var highlight = " ";
-        highlight = result.siblings(".highlighted");
+        highlight = $(".result").siblings(".highlighted");
         if (highlight.length === 0) {
-            result.eq(addRemIdx).addClass("highlighted");
+            $(".result")
+                .eq(addRemIdx)
+                .addClass("highlighted");
         }
         if (next == "next") {
             highlight.next().addClass("highlighted");
@@ -305,9 +321,11 @@
         } else if (e.which == 38) {
             e.preventDefault();
             //up arrow
+            console.log("keypress triggered up");
             highlightOnkeyPress(3, "prev");
         } else if (e.which == 40) {
             e.preventDefault();
+            console.log("keypress triggered down");
             highlightOnkeyPress(0, "next");
         }
     });

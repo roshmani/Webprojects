@@ -10,8 +10,10 @@ input {
     display: block;
     position: absolute;
     line-height: 2;
+    border: 1px solid black;
+    width: 170px;
 }
 
 .highlighted {
-    background-color: blue;
+    background-color: #d3ecfb;
 }
