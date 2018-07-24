@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+input {
+    position: relative;
+}
+
+.results {
+    display: block;
+    position: absolute;
+    line-height: 2;
+}
+
+.highlighted {
+    background-color: blue;
+}
