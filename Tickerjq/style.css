@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+}
+#box {
+    height: 20px;
+    border-bottom: 1px solid black;
+    position: absolute;
+    left: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: palegreen;
+}
+a {
+    margin-right: 10px;
+    font-family: monospace;
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: blue;
+}
