@@ -40,11 +40,12 @@ If askForNumber throws an exception, translateNumberToGerman should catch that e
                 "9": "neun",
                 "10": "zehn"
             };
-            console.log(numGerman[result]);
+            return numGerman[result];
         } catch (e) {
             console.log(e);
-            translateNumberToGerman();
+            return translateNumberToGerman();
         }
     }
-    translateNumberToGerman();
+    var translate = translateNumberToGerman();
+    console.log("translation:", translate);
 })();
