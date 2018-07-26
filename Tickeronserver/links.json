@@ -1,0 +1,33 @@
+{
+    "links": [
+        {
+            "text":
+                "France beats Croatia to win the World Cup for the second time",
+            "href":
+                "https://edition.cnn.com/2018/07/15/football/france-croatia-world-cup-final-russia/index.html"
+        },
+        {
+            "text": "Mexico Drug War Fast Facts",
+            "href":
+                "https://edition.cnn.com/2013/09/02/world/americas/mexico-drug-war-fast-facts/index.html"
+        },
+        {
+            "text": "The age of scooter sharing is upon us",
+            "href":
+                "https://money.cnn.com/video/technology/2018/07/09/electric-scooters-regulation-cities-dockless-sharing.cnnmoney/index.html"
+        },
+        {
+            "text": "Here's why 5G is the future",
+            "href":
+                "https://money.cnn.com/video/technology/future/2018/06/07/5g-explained.cnnmoney/index.html"
+        },
+        {
+            "text": "UK government survives key Brexit vote",
+            "href": "https://www.bbc.com/news/uk-politics-44864496"
+        },
+        {
+            "text": "Rolls-Royce to develop flying taxi",
+            "href": "https://www.bbc.com/news/business-44840953"
+        }
+    ]
+}
