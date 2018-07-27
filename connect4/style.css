@@ -12,21 +12,30 @@
     height: 100px;
     background-color: blue;
     padding: 10px;
-    box-shadow: 1px 1px 0px #999, 2px 2px 0px #999, 3px 3px 0px #999,
-        4px 4px 0px #999, 5px 5px 0px #999, 6px 6px 0px #999;
+    box-shadow: 0 0 30px #ccc;
+    box-sizing: border-box;
 }
-
 .hole {
     width: 80px;
     height: 80px;
     background-color: white;
     border-radius: 40px;
 }
-
 .player1 .hole {
     background-color: red;
+    animation-name: fall-animation;
+    animation-duration: 500ms;
 }
-
 .player2 .hole {
     background-color: yellow;
+    animation-name: fall-animation;
+    animation-duration: 500ms;
+}
+@keyframes fall-animation {
+    from {
+        transform: translateY(-500px);
+    }
+    to {
+        transform: translateY(0);
+    }
 }
