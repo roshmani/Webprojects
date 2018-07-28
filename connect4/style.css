@@ -6,13 +6,15 @@
     justify-content: center;
     align-content: center;
     align-items: center;
+    margin: 20px;
 }
 .slot {
     width: 100px;
     height: 100px;
     background-color: blue;
+    box-shadow: 7px 7px 28px 0px rgba(50, 50, 50, 0.6);
+    border-spacing: 4px;
     padding: 10px;
-    box-shadow: 0 0 30px #ccc;
     box-sizing: border-box;
 }
 .hole {
@@ -20,6 +22,9 @@
     height: 80px;
     background-color: white;
     border-radius: 40px;
+    border: 0px solid #00f;
+    box-shadow: inset 7px 7px 20px 0px rgba(50, 50, 50, 0.4);
+    opacity: 1;
 }
 .player1 .hole {
     background-color: red;
@@ -38,4 +43,79 @@
     to {
         transform: translateY(0);
     }
+}
+#modalmsg {
+    display: none;
+    position: fixed;
+    top: 30%;
+    right: 0;
+    bottom: 0;
+    left: 35%;
+    width: 420px;
+    height: 200px;
+    z-index: 99999;
+    border-radius: 20px;
+    border: 2px solid red;
+    background-color: white;
+    text-align: center;
+}
+
+.textmodal h3 {
+    font-family: "Georgia";
+    color: magenta;
+}
+.textmodal {
+    padding-top: 5px;
+    margin: 20px;
+    font-size: 15px;
+    color: red;
+}
+
+.buttondiv {
+    width: 100%;
+    text-align: center;
+}
+.newgame,
+.closemodal {
+    margin: 5px;
+    padding-bottom: 10px;
+    line-height: 2;
+    border-radius: 10px;
+    background-color: goldenrod;
+    font-family: sans-serif;
+    font-size: 15px;
+    color: blue;
+}
+/*animate*/
+.animated {
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+@-webkit-keyframes bounce {
+    0%,
+    100% {
+        -webkit-transform: translateY(0);
+    }
+    50% {
+        -webkit-transform: translateY(-5px);
+    }
+}
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+.bounce {
+    -webkit-animation-name: bounce;
+    animation-name: bounce;
 }

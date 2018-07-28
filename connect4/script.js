@@ -84,8 +84,16 @@
         return winCheck.indexOf("yyyy") > -1;
     }
     function showVictoryMessage() {
+        var modalDlg = $("#modalmsg");
+        var modalText = $(".textmodal").find("p");
+        var winnerTxt = "Hurrah! " + curPlayer + " " + modalText.text();
+        $(".column").off("click");
+        modalText.text(winnerTxt);
+        modalDlg.show();
+
         console.log("Hurrah! " + curPlayer + " Wins!");
     }
+
     function switchPlayers() {
         if (curPlayer == "player1") {
             curPlayer = "player2";
@@ -93,4 +101,10 @@
             curPlayer = "player1";
         }
     }
+    $(".closemodal").click(function() {
+        $("#modalmsg").remove();
+    });
+    $(".newgame").click(function() {
+        location.reload();
+    });
 })(); //end of iife
