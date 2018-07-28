@@ -1,6 +1,8 @@
 (function() {
     var curPlayer = "player1";
+    var curColor = "red";
     var slot = $(".slot");
+
     var doNothingFlag = false;
     var diagonals = [
         [0, 7, 14, 21],
@@ -28,8 +30,10 @@
         [22, 27, 32, 37],
         [23, 28, 33, 38]
     ];
+    $(".fall").css("background-color", curColor);
     $(".column").on("click", function(e) {
         var slotsInCol = $(e.currentTarget).find(slot);
+        console.log($(".slot"));
         for (var i = 5; i >= 0; i--) {
             if (!slotsInCol.eq(i).hasClass("player1")) {
                 if (!slotsInCol.eq(i).hasClass("player2")) {
@@ -42,26 +46,40 @@
         }
         if (!doNothingFlag) {
             slotsInCol.eq(i).addClass(curPlayer);
+            var curfall = $(e.currentTarget).find(".fall");
+            var curhole = slotsInCol.eq(i).find(".hole");
+            var offsetY = curhole.offset().top - 15;
+            curfall.css("background-color", curColor);
+            curfall.css("visibility", "visible");
+            var translatey = "translateY(" + offsetY + "px)";
+            curfall.css("transform", translatey);
             if (checkForVictory(slotsInCol)) {
+                console.log("colVictory");
                 return showVictoryMessage();
             } else {
                 var slotsInRow = $(".row" + i);
                 if (checkForVictory(slotsInRow)) {
+                    console.log("rowVictory");
                     return showVictoryMessage();
                 } else {
                     if (checkDiagonalVictory()) {
+                        console.log("diagVictory");
                         return showVictoryMessage();
                     }
                 }
             }
             switchPlayers();
         }
+        $(".fall").on("transitionend", function() {
+            $(".fall").css("visibility", "hidden");
+            $(".fall").css("transform", "translateY(0)");
+        });
     });
     function checkForVictory(numSlot) {
         var winCheck = "";
-
         for (var i = 0; i < numSlot.length; i++) {
             if (numSlot.eq(i).hasClass(curPlayer)) {
+                console.log("row", i);
                 winCheck += "y";
             } else {
                 winCheck += "n";
@@ -75,6 +93,7 @@
         for (var i = 0; i < diagonals.length; i++) {
             for (var j = 0; j < diagonals[i].length; j++) {
                 if (slot.eq(diagonals[i][j]).hasClass(curPlayer)) {
+                    console.log("diag", diagonals[i][j]);
                     winCheck += "y";
                 } else {
                     winCheck += "n";
@@ -90,15 +109,16 @@
         $(".column").off("click");
         modalText.text(winnerTxt);
         modalDlg.show();
-
         console.log("Hurrah! " + curPlayer + " Wins!");
     }
 
     function switchPlayers() {
         if (curPlayer == "player1") {
             curPlayer = "player2";
+            curColor = "yellow";
         } else {
             curPlayer = "player1";
+            curColor = "red";
         }
     }
     $(".closemodal").click(function() {
