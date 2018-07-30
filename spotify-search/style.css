@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+input {
+    margin: 20px;
+}
+
+#resultheader {
+    visibility: hidden;
+}
+.result-item {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    justify-content: space-around;
+    margin: 10px;
+}
+a {
+    text-decoration: none;
+}

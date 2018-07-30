@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Spotify Search</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>Spotify Search</h1>
+            </header>
+            <input type="text" name="user input" placeholder="artist/album">
+            <select class="artist-album" name="">
+                <option id="artistsel">artist</option>
+                <option id="albumsel">album</option>
+            </select>
+            <button id="submit-button" name="button">Submit</button>
+            <div class="resultwrapper">
+                <h2 id="resultheader">Results for the search for</h2>
+                <div class="results">
+                </div>
+                <div class="Load More">
+            </div>
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="script.js" type="text/javascript"></script>
+    </body>
+</html>
