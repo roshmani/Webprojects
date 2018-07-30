@@ -10,17 +10,19 @@
             <header>
                 <h1>Spotify Search</h1>
             </header>
-            <input type="text" name="user input" placeholder="artist/album">
-            <select class="artist-album" name="">
-                <option id="artistsel">artist</option>
-                <option id="albumsel">album</option>
-            </select>
-            <button id="submit-button" name="button">Submit</button>
+            <div class="search">
+                <input class="searchinput" type="text" name="user input" placeholder="artist/album">
+                <select class="artist-album">
+                    <option>artist</option>
+                    <option>album</option>
+                </select>
+                <button id="submit-button" name="button">Submit</button>
+            </div>
             <div class="resultwrapper">
                 <h2 id="resultheader">Results for the search for</h2>
                 <div class="results">
                 </div>
-                <div class="Load More">
+                <input type="button" id="loadmore" value="Load More Results">
             </div>
 
         </div>
