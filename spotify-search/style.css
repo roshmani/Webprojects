@@ -43,6 +43,7 @@ select {
     grid-template-columns: 40% 60%;
     justify-content: space-around;
     margin: 20px;
+    padding: 5px;
 }
 .result-item:hover {
     background-color: #aed6f1;

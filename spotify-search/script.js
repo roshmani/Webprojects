@@ -5,16 +5,17 @@
     var baseurl = "";
     var spotifyNext = "";
     var htmlStr = "";
+    var infinitescroll = location.search.indexOf("scroll=infinite") > -1;
     var loadmore = $("#loadmore");
     $("#submit-button").on("click", function(e) {
         baseurl = initUrl;
         fetchData(e.currentTarget);
-    }); //on.click
+    }); //submit .on.click
 
     loadmore.on("click", function(e) {
         baseurl = nextUrl;
         fetchData(e.currentTarget);
-    });
+    }); // load more on click
 
     function fetchData(curTarget) {
         htmlStr = "";
@@ -62,18 +63,8 @@
                     } else {
                         $(".results").append(htmlStr);
                     }
-                    spotifyNext = artistData.next;
-                    if (spotifyNext !== null) {
-                        nextUrl =
-                            initUrl +
-                            spotifyNext.substring(
-                                spotifyNext.indexOf("?"),
-                                spotifyNext.length
-                            );
-                        $("#loadmore").css("visibility", "visible");
-                    } else {
-                        $("#loadmore").css("visibility", "hidden");
-                    }
+                    getNextUrl(artistData);
+
                     if (htmlStr === "") {
                         resultheader += " No results";
                     } //if empty
@@ -83,6 +74,42 @@
             }); //.ajax
         } else {
             alert("Please enter artist or album name!");
+        }
+    } // function end
+
+    function getNextUrl(data) {
+        // getting the next url
+        spotifyNext = data.next;
+        if (spotifyNext !== null) {
+            nextUrl =
+                initUrl +
+                spotifyNext.substring(
+                    spotifyNext.indexOf("?"),
+                    spotifyNext.length
+                );
+            if (!infinitescroll) {
+                loadmore.css("visibility", "visible");
+            } else {
+                loadmore.css("visibility", "hidden");
+                checkScrollPos();
+            }
+        } else {
+            loadmore.css("visibility", "hidden");
+        }
+    } //getNextUrl
+
+    function checkScrollPos() {
+        var topScroll = $(document).scrollTop(); //how much scrolled
+        var pageHeight = $(document).height(); // page Height
+        var windowHeight = $(window).height();
+        var scrollPos = topScroll + windowHeight;
+        if (scrollPos >= pageHeight - 10) {
+            if (spotifyNext != null) {
+                baseurl = nextUrl;
+                fetchData(loadmore);
+            }
+        } else {
+            setTimeout(checkScrollPos, 600);
         }
     }
 })(); //iife
