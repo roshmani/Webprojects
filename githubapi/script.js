@@ -12,7 +12,6 @@ Array.prototype.slice.call(templates).forEach(function(script) {
 var username = "";
 var password = "";
 var usernametosearch = "";
-
 var baseUrl = "https://api.github.com";
 $("button").on("click", function(e) {
     username = $('input[name="username"]').val();
@@ -41,39 +40,47 @@ $("button").on("click", function(e) {
 
 $(document).on("click", ".repo-item", function(e) {
     e.preventDefault();
-    console.log("in repo click", e.target);
-    var repoName;
-    if (e.target.id == "reponame") {
-        repoName = $(e.target).text();
-    } else {
-        var getpelem = $(e.target)
-            .closest(".repo-item")
-            .find("p");
-        repoName = getpelem.text();
-    }
-    console.log("reponame:", repoName);
-    var endpoint = "/repos/" + repoName + "/commits";
-    console.log("link:", endpoint);
-    $.ajax({
-        url: baseUrl + endpoint,
-        headers: {
-            Authorization: "Basic " + btoa(username + ":" + password)
-        },
-        success: function(commitData) {
-            var numCommit = commitData.length;
-            commitData = commitData.slice(numCommit - 10, numCommit);
-            console.log("commitdata:", commitData);
-            //get the closest repo-item element and find its corresponding sibling
-            var commitdiv = $(e.target)
-                .closest(".repo-item")
-                .find("div");
 
-            commitdiv.html(
-                Handlebars.templates.getcommitmsg({
-                    commitData: commitData
-                })
-            );
-            commitdiv.css("visibility", "visible");
+    var repoName;
+    //get the closest repo-item element and find its corresponding div
+    var commitdiv = $(e.target)
+        .closest(".repo-item")
+        .find("div");
+
+    if (
+        $(e.target)
+            .closest(".repo-item")
+            .hasClass("clicked")
+    ) {
+        commitdiv.toggle();
+    } else {
+        $(e.target)
+            .closest(".repo-item")
+            .addClass("clicked");
+        if (e.target.id == "reponame") {
+            repoName = $(e.target).text();
+        } else {
+            var getpelem = $(e.target)
+                .closest(".repo-item")
+                .find("p");
+            repoName = getpelem.text();
         }
-    });
+        var endpoint = "/repos/" + repoName + "/commits";
+        $.ajax({
+            url: baseUrl + endpoint,
+            headers: {
+                Authorization: "Basic " + btoa(username + ":" + password)
+            },
+            success: function(commitData) {
+                var numCommit = commitData.length;
+                commitData = commitData.slice(numCommit - 10, numCommit);
+                commitdiv.html(
+                    Handlebars.templates.getcommitmsg({
+                        commitData: commitData
+                    })
+                ); //.html end
+                commitdiv.css("visibility", "visible");
+            } // success function
+        }); //ajax
+    }
 });
