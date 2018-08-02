@@ -1,0 +1,13 @@
+const url = require("url");
+const querystring = require("querystring");
+const urlarg = process.argv[2];
+const parsedUrl = url.parse(urlarg);
+console.log("The protocol is: ", parsedUrl.protocol);
+console.log("The host is : ", parsedUrl.host);
+console.log("The hostname is : ", parsedUrl.hostname);
+console.log("The port is: ", parsedUrl.port);
+console.log("The pathname is: ", parsedUrl.pathname);
+console.log("The query is : ", parsedUrl.query);
+const queryVals = querystring.parse(parsedUrl.query);
+console.log("The value of the a parameter is ", queryVals.a);
+console.log("The value of the b parameter is ", queryVals.b);
