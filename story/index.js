@@ -43,5 +43,15 @@ function askQuestion(adventure) {
         }
     });
 }
+function greet() {
+    rl.question("Please Enter your name:", function(name) {
+        if (name.length > 0) {
+            console.log("Good Day!..", name);
+        } else {
+            greet();
+        }
+        askQuestion(story);
+    });
+}
 
-askQuestion(story);
+greet();
