@@ -14,10 +14,6 @@ server.on("request", (request, response) => {
         request.method + "\n" + "request headers:",
         request.headers
     );
-    let body = "";
-    request.on("data", function(chunk) {
-        body += chunk;
-    });
 
     if (request.method == "GET" || request.method == "HEAD") {
         response.setHeader("Content-Type", "text/html");
