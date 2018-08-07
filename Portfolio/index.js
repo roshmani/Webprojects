@@ -40,8 +40,6 @@ server.on("request", (request, response) => {
                 return response.end();
             } else {
                 if (stats.isFile()) {
-                    let ext = path.extname(myPath).replace(".", "");
-                    response.setHeader("Content-Type", contentType[ext]);
                     serveFile(myPath);
                 } else {
                     let filePath = myPath;

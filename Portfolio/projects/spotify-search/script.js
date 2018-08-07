@@ -1,13 +1,3 @@
-////**************************set up for handle bar*****************************************************
-Handlebars.templates = Handlebars.templates || {};
-var templates = document.querySelectorAll(
-    'script[type="text/x-handlebars-template"]'
-);
-Array.prototype.slice.call(templates).forEach(function(script) {
-    Handlebars.templates[script.id] = Handlebars.compile(script.innerHTML);
-});
-//*******************************************************************************************************
-var authorArr = [
 (function() {
     var resultheader = "";
     var nextUrl = "";
@@ -54,10 +44,6 @@ var authorArr = [
                         }
                         spotifyUrl =
                             artistData.items[i].external_urls["spotify"];
-                            artistData.items.map(function(){
-                                artistData=[{name:getnamefrom fetchData
-                                external_urls}]
-                            });
                         htmlStr +=
                             "<a href=" +
                             spotifyUrl +
