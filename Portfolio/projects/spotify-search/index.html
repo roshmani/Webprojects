@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Spotify Search</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>Spotify Search</h1>
+            </header>
+            <div class="search">
+                <input class="searchinput" type="text" name="user input" placeholder="artist/album">
+                <select class="artist-album">
+                    <option>artist</option>
+                    <option>album</option>
+                </select>
+                <button id="submit-button" name="button">Submit</button>
+            </div>
+            <div class="resultwrapper">
+                <h2 id="resultheader">Results for the search for</h2>
+                <div class="results">
+
+                </div>
+                <input type="button" id="loadmore" value="Load More Results">
+            </div>
+        </div>
+        <script id="artistalbum" type="text/x-handlebars-template">
+            {{#each data}}
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="script.js" type="text/javascript"></script>
+    </body>
+</html>
