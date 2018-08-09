@@ -74,7 +74,7 @@ app.get("/portfolio", function(request, response) {
         projectlist: projlist
     });
 });
-app.get("/projects/:projectName", function(request, response) {
+app.get("/projects/:projectName", function(request, response, next) {
     //loop through the array and find project Projname-request.params
     let projname = request.params.projectName;
     let title,
@@ -92,6 +92,7 @@ app.get("/projects/:projectName", function(request, response) {
     }
     if (noprojflag === false) {
         console.log("No such project");
+        return next();
     }
     response.render("projectdescription", {
         projectList: projectList,
