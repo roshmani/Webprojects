@@ -36,12 +36,14 @@ module.exports.getBearerToken = function(cb) {
     req.end();
 };
 
-module.exports.getTweets = function(bearerToken, cb) {
-    console.log("Tweet tweet:", bearerToken);
+module.exports.getTweets = function(bearerToken, screenName, cb) {
     //The url we want is: 'www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
     var options = {
         host: "api.twitter.com",
-        path: "/1.1/statuses/user_timeline.json?screen_name=BBCNews&count=20",
+        path:
+            "/1.1/statuses/user_timeline.json?screen_name=" +
+            screenName +
+            "&count=20",
         headers: {
             Authorization: `Bearer ${bearerToken}`
         }

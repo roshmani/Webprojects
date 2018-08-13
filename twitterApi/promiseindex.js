@@ -10,11 +10,27 @@ const getTweet = promisify(getTweets);
 app.get("/links.json", (request, response) => {
     getToken()
         .then(function(bearerToken) {
-            return getTweet(bearerToken);
+            return Promise.all([
+                getTweet(bearerToken, "nytimes"),
+                getTweet(bearerToken, "BBCNews"),
+                getTweet(bearerToken, "CNN")
+            ])
+                .then(function(tweetarr) {
+                    let tweets = Array.prototype.concat.apply([], tweetarr);
+                    //console.log("tweetarray:", tweetarr);
+                    console.log("tweet array has:", tweets.length);
+                    tweets.sort(function(a, b) {
+                        return new Date(a.created_at) - new Date(b.created_at);
+                    });
+                    //console.log("tweetarraysorted:", tweetarr);
+                    return tweets;
+                })
+                .then(function(tweets) {
+                    console.log("Tweets before filter call:", tweets);
+                    response.json({ links: filterTweets(tweets) });
+                });
         })
-        .then(function(tweets) {
-            response.json({ links: filterTweets(tweets) });
-        })
+
         .catch(function(err) {
             console.log("Error occured!", err);
         });
