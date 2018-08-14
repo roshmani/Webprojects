@@ -73,10 +73,11 @@ module.exports.filterTweets = function(tweets) {
     for (let i = 0; i < tweets.length; i++) {
         if (tweets[i].entities.urls.length == 1) {
             links.push({
-                text: tweets[i].text.replace(
-                    tweets[i].entities.urls[0].url,
-                    ""
-                ),
+                text:
+                    tweets[i].text.replace(tweets[i].entities.urls[0].url, "") +
+                    "(" +
+                    tweets[i].user.screen_name +
+                    ")",
                 href: tweets[i].entities.urls[0].url
             });
         }
