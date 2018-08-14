@@ -1,0 +1,45 @@
+/*Use CSS Grid to reproduce the following design. Each outer box should be a grid container containing a single grid item.*/
+#container {
+    width: 820px;
+    display: grid;
+    grid-template-rows: 200px;
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    grid-gap: 5px;
+}
+.bigbox {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+#graybox {
+    background-color: gray;
+}
+#blackbox {
+    background-color: black;
+}
+#bluebox {
+    background-color: blue;
+}
+#purplebox {
+    background-color: purple;
+}
+
+#box1 {
+    background-color: orange;
+    grid-column: 2/3;
+}
+
+#box2 {
+    background-color: yellow;
+    grid-row: 2/3;
+    grid-column: 2/3;
+}
+
+#box3 {
+    background-color: green;
+    grid-row: 2/3;
+}
+
+#box4 {
+    background-color: lightpink;
+}

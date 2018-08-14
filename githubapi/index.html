@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <header><h1>Git hub API </h1></header>
+        <div class="wrapper">
+            <div class="formdiv">
+                <form class="login">
+                 <input autocomplete="off" type="text" name="username" placeholder="username">
+                 <input type="password" name="password" placeholder="password">
+                 <input type="text" name="usernamesearch" placeholder="username to search">
+                 <button  type="submit">Submit</button>
+                </form>
+            </div>
+            <div id="reposdiv">
+            </div>
+        </div>
+        <script id="getrepo" type="text/x-handlebars-template">
+            {{#each gitData}}
+                <div class="repo-item">
+                    <img src={{owner.avatar_url}} alt="userimage">
+                    <p id="reponame">{{full_name}}</p>
+                    <div class="commitmsgs"></div>
+                </div>
+            {{/each}}
+        </script>
+        <script id="getcommitmsg" type="text/x-handlebars-template">
+            <ul class="commitmsg">
+                <h3>Recent Commit Messages:</h3>
+                {{#each commitData}}
+                    <li class="commitmsg">{{commit.message}}</li>
+                {{/each}}
+            </ul>
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+        <script src="script.js" type="text/javascript">
+        </script>
+    </body>
+</html>

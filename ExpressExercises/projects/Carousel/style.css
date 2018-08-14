@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+#carousel {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.kitty {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform: translateX(100%);
+    transition-property: "transform";
+    transition-duration: 0s;
+}
+.kitty.onscreen {
+    transform: translateX(0);
+    transition-duration: 1s;
+}
+
+.kitty.exit {
+    transform: translateX(-100%);
+    transition-duration: 1s;
+}
+
+.kitty img {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down; /* i want my pics to fit*/
+    object-position: center;
+}
+#dotButtons {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+.dot {
+    height: 15px;
+    width: 15px;
+    border: 2px solid blue;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+.dot.active {
+    background-color: blue;
+}
+@media screen and (max-width: 600px) and (max-height: 480px) {
+}

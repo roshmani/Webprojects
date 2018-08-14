@@ -6,7 +6,8 @@
     var newsList = document.querySelectorAll("a");
     var lastIndex = newsList.length - 1;
     var widthLastItem = newsList[lastIndex].offsetWidth;
-    var totalWidth = widthLastItem + box.offsetWidth;
+    var totalWidth =
+        widthLastItem + box.offsetWidth - (widthLastItem + initSpaceBoxLeft);
     function move() {
         if (spaceBoxLeft >= -totalWidth) {
             spaceBoxLeft--;
@@ -18,18 +19,19 @@
     }
     move();
 
-    var linkelems = document.getElementsByClassName('news');
-    var boxelem= document.getElementById('box');
+    var linkelems = document.getElementsByClassName("news");
+    var boxelem = document.getElementById("box");
 
     Array.prototype.forEach.call(linkelems, function(link) {
-      link.addEventListener("mouseenter", function() {
-          cancelAnimationFrame(animId);
-          link.style.textDecoration = "underline";
-          link.style.color = "blue";
-      });
-    });
-           boxelem.addEventListener("mouseleave", function() {
-            move();
+        link.addEventListener("mouseenter", function(e) {
+            e.stopPropagation();
+            cancelAnimationFrame(animId);
         });
-
+    });
+    boxelem.addEventListener("mouseleave", function() {
+        if (animId) {
+            cancelAnimationFrame(animId);
+        }
+        move();
+    });
 })();

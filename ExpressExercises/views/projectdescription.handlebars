@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Project Description</title>
+         <link rel="stylesheet" href="/style.css" type="text/css">
+    </head>
+    <body>
+        <div class="Main">
+            <div class="menu">
+               {{>projectList}}
+            </div>
+            <div class="description">
+                <h1>My projects:</h1>
+                <h3>{{title}}</h3>
+                <img class="descimg" src="/{{projname}}/projimg.png" alt="cannot load">
+                <p>{{desc}}</p>
+            </div>
+        </div>
+
+    </body>
+</html>

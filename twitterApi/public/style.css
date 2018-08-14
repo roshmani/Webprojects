@@ -5,7 +5,7 @@
     height: 20px;
     border-bottom: 1px solid black;
     position: absolute;
-    left: 100%;
+    left: 0;
     white-space: nowrap;
     text-overflow: ellipsis;
     background-color: palegreen;
