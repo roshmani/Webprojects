@@ -66,6 +66,7 @@ marsPivot.add(marsMesh);
 /*************************************Orbit Controls*************************************************************/
 var orbit = new THREE.OrbitControls(camera, renderer.domElement);
 orbit.enableZoom = false;
+/************************************Add sky background *********************************************************/
 var imagePrefix = "./";
 var urls = [
     "space.jpg",
@@ -77,7 +78,27 @@ var urls = [
 ];
 var skyBox = new THREE.CubeTextureLoader().setPath(imagePrefix).load(urls);
 scene.background = skyBox;
+/************************************add a Text***************************************************************/
+// add 3D text default
+var fontMaterial = new THREE.MeshPhongMaterial({
+    color: 0xe93a13
+});
+var loader = new THREE.FontLoader();
+var textGeom;
+loader.load("./fonts/helvetiker_regular.typeface.json", function(font) {
+    textGeom = new THREE.TextGeometry("Solar System!", {
+        font: font,
+        size: 5,
+        height: 1,
+        curveSegments: 15,
+        bevelSegments: 15
+    });
+    var textMesh = new THREE.Mesh(textGeom, fontMaterial);
+    textMesh.position.set(-20, 18, -5);
+    scene.add(textMesh);
+});
 
+/************************************render everything********************************************************/
 var render = function() {
     requestAnimationFrame(render);
 
@@ -91,3 +112,10 @@ var render = function() {
 };
 render();
 document.body.appendChild(renderer.domElement);
+window.addEventListener("resize", onWindowResize, false);
+
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
