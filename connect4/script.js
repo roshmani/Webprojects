@@ -5,6 +5,7 @@
     var matchindex;
     var doNothingFlag = false;
     $(".fall").css("background-color", curColor);
+    $(".playerDot").css("background-color", curColor);
     $(".column").on("click", function(e) {
         var slotsInCol = $(e.currentTarget).find(slot);
         for (var i = 5; i >= 0; i--) {
@@ -24,6 +25,7 @@
             var offsetY = curhole.offset().top - 78;
             console.log("holeoffset", offsetY);
             curfall.css("background-color", curColor);
+            $(".playerDot").css("background-color", curColor);
             curfall.css("visibility", "visible");
             var translatey = "translateY(" + offsetY + "px)";
             curfall.css("transform", translatey);
